@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Fichefrais} from "../metier/Fichefrais";
+import {FichefraisServiceServicew} from "../service/fichefrais-service.service";
 
 @Component({
   selector: 'app-listefichefrais',
