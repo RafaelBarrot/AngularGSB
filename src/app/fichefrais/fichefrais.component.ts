@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Fichefrais} from "../metier/Fichefrais";
+import {Frais} from "../metier/Frais";
 import { Router, ActivatedRoute, ParamMap} from "@angular/router";
 import {FichefraisServiceService} from "../service/fichefrais-service.service";
 
@@ -9,8 +9,13 @@ import {FichefraisServiceService} from "../service/fichefrais-service.service";
   styleUrls: ['./fichefrais.component.css']
 })
 export class FichefraisComponent implements OnInit {
+  private unFrais:Frais[]=[];
+  private fraisid:number=0;
+  private titre:string="Modification d'un frais";
+  private paramMap: ParamMap[]=[];
+  private error: string='';
 
-  constructor() { }
+  constructor(private unFS: FichefraisServiceService,private ActivatedRoute:ActivatedRoute,private unRouteur:Router) { }
 
   ngOnInit(): void {
   }

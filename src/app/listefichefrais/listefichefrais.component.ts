@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Fichefrais} from "../metier/Fichefrais";
+import {Frais} from "../metier/Frais";
 import {FichefraisServiceService} from "../service/fichefrais-service.service";
 import { Router} from "@angular/router";
 import { HttpHeaders} from "@angular/common/http";
@@ -11,11 +11,11 @@ import { HttpHeaders} from "@angular/common/http";
 })
 export class ListefichefraisComponent implements OnInit {
 
-  public mesFrais: Fichefrais[]= [];
+  public mesFrais: Frais[]= [];
   private error: string="";
   private id: number=0;
   public titre: string="";
-  private unFrais: Fichefrais= new  Fichefrais();
+  private unFrais: Frais= new  Frais();
 
   constructor(private unFS: FichefraisServiceService, private unRouteur: Router) {
     let httpheader = new HttpHeaders({
