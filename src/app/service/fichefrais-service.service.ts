@@ -25,7 +25,7 @@ export class FichefraisServiceService {
 
 
   getFicheFraisListe(id:number):Observable<any> {
-    this.ClientUrl = environment.ENDPOINT + '/api/frais/listeFrais/'+ id;
+    this.ClientUrl = environment.ENDPOINT + 'api/frais/listeFrais/'+ id;
     return this.httpClient.get(this.ClientUrl);
   }
 
