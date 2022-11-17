@@ -44,4 +44,11 @@ export class ListefichefraisComponent implements OnInit {
 
   }
 
+  supprimer(idFrais: number) {
+
+  }
+
+  modifier(id_frais: number) {
+
+  }
 }

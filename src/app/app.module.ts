@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import {FormsModule} from "@angular/forms";
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -8,6 +10,9 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FichefraisComponent } from './fichefrais/fichefrais.component';
 import { AjoutfichefraisComponent } from './ajoutfichefrais/ajoutfichefrais.component';
 import { ConnexionComponent } from './connexion/connexion.component';
+import {HttpClientModule} from "@angular/common/http";
+import {Visiteur} from "./metier/visiteur";
+import {FichefraisServiceService} from "./service/fichefrais-service.service";
 
 @NgModule({
   declarations: [
@@ -20,9 +25,15 @@ import { ConnexionComponent } from './connexion/connexion.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+
   ],
-  providers: [],
+  providers: [
+    FichefraisServiceService,
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
