@@ -17,7 +17,9 @@ export class FichefraisComponent implements OnInit {
 
   constructor(private unFS: FichefraisServiceService,private ActivatedRoute:ActivatedRoute,private unRouteur:Router) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.fraisid= +this.ActivatedRoute.snapshot.paramMap.get('id');
+    this.getFrais(this.fraisid);
   }
 
 }
