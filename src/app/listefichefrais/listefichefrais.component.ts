@@ -14,7 +14,7 @@ export class ListefichefraisComponent implements OnInit {
   public mesFrais: Fichefrais[]= [];
   private error: string="";
   private id: number=0;
-  private titre: string="";
+  public titre: string="";
   private unFrais: Fichefrais= new  Fichefrais();
 
   constructor(private unFS: FichefraisServiceService, private unRouteur: Router) {
@@ -26,19 +26,22 @@ export class ListefichefraisComponent implements OnInit {
 
   ngOnInit(): void {
     let item = localStorage.getItem('id');
+    // @ts-ignore
     this.id = Number.parseInt(item);
     this.titre ='Liste des frais du visiteur' + this.id;
     this.getFicheFraisListe(this.id);
   }
+
   getFicheFraisListe(id:number): void  {
     this.unFS.getFicheFraisListe(id).subscribe(
-      (fichefrais)=>{
-        this.mesFrais = fichefrais;
+      (Fichefrais)=>{
+        this.mesFrais = Fichefrais;
       },
       (error)=>{
         this.error=error.messages;
       }
     )
+
   }
 
 }
