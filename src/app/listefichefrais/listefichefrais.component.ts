@@ -25,10 +25,10 @@ export class ListefichefraisComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    //let item = localStorage.getItem('id');
+    let item = localStorage.getItem('id');
     // @ts-ignore
-    //this.id = Number.parseInt(item);
-    this.id=1;
+    this.id = Number.parseInt(item);
+
     this.titre ='Liste des frais du visiteur' + this.id;
     this.getFicheFraisListe(this.id);
   }
