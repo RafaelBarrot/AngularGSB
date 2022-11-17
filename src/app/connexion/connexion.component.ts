@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
-import {VisiteurService} from '../service/visiteur.service';
-
+import {ServiceVisiteurService} from '../service/service-visiteur.service';
 import {Visiteur} from "../metier/visiteur";
 
 
@@ -21,7 +20,7 @@ export class ConnexionComponent implements OnInit {
   public unVisiteur! : Visiteur;
   private error : string='';
 
-  constructor(private unVS: VisiteurService, private router:Router) { }
+  constructor(private unVS: ServiceVisiteurService, private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -33,16 +32,20 @@ export class ConnexionComponent implements OnInit {
     this.unVisiteur.id_visiteur!=0;
 
     this.unVS.getLogin(this.unVisiteur).subscribe(
-      (visiteur) =>
-        this.unVisiteur=visiteur;
-      if (this.unVisiteur.id_visiteur!=0)
-      {
-        alert("Authentification réussie !!!");
-        localStorage.setItem('id',(this.unVisiteur.id_visiteur).toString());
-      }
-      else {
-        alert ("Erreur d'appel !");
-      }
+      (visiteur) => {
+        this.unVisiteur = visiteur;
+        if (this.unVisiteur.id_visiteur != 0) {
+          alert("Authentification réussie !!!");
+          localStorage.setItem('id', (this.unVisiteur.id_visiteur).toString());
+        } else {
+          alert("Erreur d'appel !");
+        }
+      },
+
+      (error) => {
+        alert ("Erreur d'appel!");
+      });
+
     }
 
 }
