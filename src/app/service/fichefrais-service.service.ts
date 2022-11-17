@@ -28,6 +28,10 @@ export class FichefraisServiceService {
     this.ClientUrl = environment.ENDPOINT + 'api/frais/listeFrais/'+ id;
     return this.httpClient.get(this.ClientUrl);
   }
+  getFicheFrais(id:number):Observable<any> {
+    this.ClientUrl = environment.ENDPOINT + 'api/frais/getUnFrais/'+ id;
+    return this.httpClient.get(this.ClientUrl);
+  }
 
   private handleError(error:Response | any){
     let errMsg: string="";
