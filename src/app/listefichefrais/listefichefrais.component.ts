@@ -15,7 +15,7 @@ export class ListefichefraisComponent implements OnInit {
   private error: string="";
   private id: number=0;
   public titre: string="";
-  private unFrais: Frais= new  Frais();
+  private unFrais: Frais = new  Frais();
 
   constructor(private unFS: FichefraisServiceService, private unRouteur: Router) {
     let httpheader = new HttpHeaders({

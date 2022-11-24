@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Frais} from "../metier/Frais";
 import { Router, ActivatedRoute, ParamMap} from "@angular/router";
 import {FichefraisServiceService} from "../service/fichefrais-service.service";
+import {Etat} from "../metier/Etat";
 
 @Component({
   selector: 'app-fichefrais',
@@ -14,12 +15,30 @@ export class FichefraisComponent implements OnInit {
   private titre:string="Modification d'un frais";
   private paramMap: ParamMap[]=[];
   private error: string='';
+  private mesEtat: Etat[]=[];
 
   constructor(private unFS: FichefraisServiceService,private ActivatedRoute:ActivatedRoute,private unRouteur:Router) { }
 
   ngOnInit() {
     this.fraisid= +this.ActivatedRoute.snapshot.paramMap.get('id');
-    this.getFrais(this.fraisid);
+    this.getFicheFrais(this.fraisid);
+    this.getEtat();
+  }
+
+
+
+
+
+  getEtat(): void  {
+    this.unES.getListeEtat().subscribe(
+      (mesEtat)=>{
+        this.mesEtat = mesEtat;
+      },
+      (error)=>{
+        this.error=error.messages;
+      }
+    )
+
   }
 
 }

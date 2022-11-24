@@ -11,11 +11,11 @@ import {environment} from "../../environments/environment";
 export class FichefraisServiceService {
 
   private headers = new Headers({'content-type': 'application/json'});
-  private ClientUrl: string="";
+  private ClientUrl: string = "";
 
-  private unFrais: Frais= new Frais();
+  private unFrais: Frais = new Frais();
 
-  constructor(private httpClient:HttpClient) {
+  constructor(private httpClient: HttpClient) {
     //on définit le header
     let httpHeader = new HttpHeaders({
       'content-type': 'application/json',
@@ -24,23 +24,26 @@ export class FichefraisServiceService {
   }
 
 
-  getFicheFraisListe(id:number):Observable<any> {
-    this.ClientUrl = environment.ENDPOINT + 'api/frais/listeFrais/'+ id;
-    return this.httpClient.get(this.ClientUrl);
-  }
-  getFicheFrais(id:number):Observable<any> {
-    this.ClientUrl = environment.ENDPOINT + 'api/frais/getUnFrais/'+ id;
+  getFicheFraisListe(id: number): Observable<any> {
+    this.ClientUrl = environment.ENDPOINT + 'api/frais/listeFrais/' + id;
     return this.httpClient.get(this.ClientUrl);
   }
 
-  private handleError(error:Response | any){
-    let errMsg: string="";
-    if (error instanceof  Response){
+  getFicheFrais(id: number): Observable<any> {
+    this.ClientUrl = environment.ENDPOINT + 'api/frais/getUnFrais/' + id;
+    return this.httpClient.get(this.ClientUrl);
+  }
+
+  private handleError(error: Response | any) {
+    let errMsg: string = "";
+    if (error instanceof Response) {
       const body = error.json() || '';
       const err = JSON.stringify(body);
       errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
     }
     console.error(errMsg);
     return Promise.reject(error.message || error);
+
   }
+
 }
