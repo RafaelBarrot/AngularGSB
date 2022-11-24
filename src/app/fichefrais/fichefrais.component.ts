@@ -19,9 +19,9 @@ export class FichefraisComponent implements OnInit {
   public unFrais!  : Frais ;
   private fraisid!:number;
   public titre:string="Modification d'un frais";
-  private paramMap: ParamMap[]=[];
+  private paramMap!: ParamMap[];
   private error: string='';
-  private mesEtat: Etat[]=[];
+  public mesEtat: Etat[]=[];
 
   constructor(private unES: EtatServiceService, private unFS: FichefraisServiceService,
               private ActivatedRoute: ActivatedRoute, private unRouteur: Router){
@@ -39,6 +39,7 @@ export class FichefraisComponent implements OnInit {
     this.ClientUrl = environment.ENDPOINT + 'api/frais/getUnFrais/' + id;
     return this.httpClient.get(this.ClientUrl);
   }*/
+
   getFicheFrais(id:number): void  {
     this.unFS.getFicheFrais(id).subscribe(
       (Fichefrais)=>{
