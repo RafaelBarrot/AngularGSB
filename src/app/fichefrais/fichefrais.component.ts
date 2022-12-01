@@ -63,6 +63,28 @@ export class FichefraisComponent implements OnInit {
     )
 
   }
+  annuler():void{
+    this.unRouteur.navigate(['/accueil']);
+
+  }
+
+  valider():void {
+    this.unFS.updateFrais(this.unFrais).subscribe(
+      () => {
+
+      },
+      (error)=> {
+        this.error  = error.messages;
+      }
+    );
+    if (this.error !='')
+      alert("Erreur survenue " + this.error);
+    else
+      alert("Modification réussie !");
+    this.unRouteur.navigate(['/accueil']);
+  }
+
+
 
 
 }

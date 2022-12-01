@@ -3,6 +3,8 @@ import {Frais} from "../metier/Frais";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {environment} from "../../environments/environment";
+import {observableToBeFn} from "rxjs/internal/testing/TestScheduler";
+import {FichefraisComponent} from "../fichefrais/fichefrais.component";
 
 
 @Injectable({
@@ -44,6 +46,11 @@ export class FichefraisServiceService {
     console.error(errMsg);
     return Promise.reject(error.message || error);
 
+  }
+
+  updateFrais(unFrais: Frais): Observable<any>{
+    this.ClientUrl = environment.ENDPOINT + 'api/frais/updateFicheFrais';
+    return  this.httpClient.post(this.ClientUrl, JSON.stringify(unFrais));
   }
 
 }
