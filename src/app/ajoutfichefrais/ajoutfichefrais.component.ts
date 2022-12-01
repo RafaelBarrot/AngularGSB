@@ -18,6 +18,7 @@ export class AjoutfichefraisComponent implements OnInit {
   private error: string='';
   public mesEtat: Etat[]=[];
 
+
   constructor(private unES: EtatServiceService, private unFS: FichefraisServiceService,
               private ActivatedRoute: ActivatedRoute, private unRouteur: Router) { }
 
@@ -31,6 +32,9 @@ export class AjoutfichefraisComponent implements OnInit {
   }
 
   valider():void {
+
+    let valeur=localStorage.getItem('id');
+    this.unFrais.id_visiteur=Number(valeur);
     this.unFS.addFicheFrais(this.unFrais).subscribe(
       () => {
 
