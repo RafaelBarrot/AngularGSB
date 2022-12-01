@@ -53,4 +53,10 @@ export class FichefraisServiceService {
     return  this.httpClient.post(this.ClientUrl, JSON.stringify(unFrais));
   }
 
+  deleteFrais(unFrais:Frais ): Observable<any>{
+    this.ClientUrl = environment.ENDPOINT + 'api/frais/deleteFicheFrais';
+    return  this.httpClient.post(this.ClientUrl, JSON.stringify(unFrais));
+
+}
+
 }
